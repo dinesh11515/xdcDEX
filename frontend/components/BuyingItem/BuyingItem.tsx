@@ -11,8 +11,8 @@ const BuyingItem: React.FC<{
   price: number;
   seller: string;
   id: number;
-  matic: boolean;
-}> = ({ name, quantity, price, seller, id, matic }) => {
+  xdc: boolean;
+}> = ({ name, quantity, price, seller, id, xdc }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { contract, signer, account }: any = useContext(dexContext);
   const [dataUrl,setDataUrl] = useState<string>("");
@@ -33,14 +33,11 @@ const BuyingItem: React.FC<{
  
   const buyItem = async (id: number, amount: BigNumber, name: string) => {
     try {
-      let data : any = [];
-      data.push({name: name, amount: amount.toString(), seller: seller, buyer: account});
-      if (matic) {
-        const tx = await contract.buyMaticRequest(id, amount, name);
+      if (xdc) {
+        const tx = await contract.buyXdcRequest(id, amount, name);
       } else {
         const tx = await contract.buyTokenRequest(id, amount, name);
       }
-      alert("Item bought successfully!");
     } catch (e) {
       alert(e);
     }

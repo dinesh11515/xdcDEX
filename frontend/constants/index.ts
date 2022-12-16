@@ -1,4 +1,4 @@
-export const contract_address = "0x45D0e0eADf79A3cc2258b80f13C0A4b5E1A1433E";
+export const contract_address = "0xA0e44f49A9eA0AB837d0ad48912D0B2E9F4e6322";
 export const contract_abi = [
   {
     "inputs": [],
@@ -71,7 +71,7 @@ export const contract_abi = [
           },
           {
             "internalType": "bool",
-            "name": "matic",
+            "name": "xdc",
             "type": "bool"
           },
           {
@@ -100,35 +100,12 @@ export const contract_abi = [
             "type": "uint256"
           }
         ],
-        "internalType": "struct polyDEX.SellerList[]",
+        "internalType": "struct xdcDEX.SellerList[]",
         "name": "",
         "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-      }
-    ],
-    "name": "buyMaticRequest",
-    "outputs": [],
-    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -163,7 +140,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {
@@ -239,16 +216,26 @@ export const contract_abi = [
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getLatestPrice",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "int256",
-        "name": "",
-        "type": "int256"
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
       }
     ],
-    "stateMutability": "view",
+    "name": "buyXdcRequest",
+    "outputs": [],
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -280,7 +267,7 @@ export const contract_abi = [
           },
           {
             "internalType": "bool",
-            "name": "matic",
+            "name": "xdc",
             "type": "bool"
           },
           {
@@ -329,7 +316,7 @@ export const contract_abi = [
             "type": "string"
           }
         ],
-        "internalType": "struct polyDEX.buyRequest[]",
+        "internalType": "struct xdcDEX.buyRequest[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -364,7 +351,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {
@@ -423,7 +410,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {
@@ -529,7 +516,7 @@ export const contract_abi = [
             "type": "string"
           }
         ],
-        "internalType": "struct polyDEX.payment[]",
+        "internalType": "struct xdcDEX.payment[]",
         "name": "_payments",
         "type": "tuple[]"
       }
@@ -550,24 +537,6 @@ export const contract_abi = [
     "name": "release",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      }
-    ],
-    "name": "sellMatic",
-    "outputs": [],
-    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -601,6 +570,24 @@ export const contract_abi = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      }
+    ],
+    "name": "sellXdc",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -625,7 +612,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {
@@ -680,7 +667,7 @@ export const contract_abi = [
             "type": "string"
           }
         ],
-        "internalType": "struct polyDEX.payment[]",
+        "internalType": "struct xdcDEX.payment[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -749,7 +736,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {
@@ -813,7 +800,7 @@ export const contract_abi = [
       },
       {
         "internalType": "bool",
-        "name": "matic",
+        "name": "xdc",
         "type": "bool"
       },
       {

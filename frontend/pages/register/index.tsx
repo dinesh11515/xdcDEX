@@ -125,12 +125,7 @@ const RegistrationFrom: React.FC = () => {
       });
     }
     try {
-      let data : any =[]
-      data.payments = payments;
-      data.name = enteredName;
-      data.email = enteredEmail;
       const tx = await contract.register(enteredName, enteredEmail, payments);
-      toast.success("Registered Successfully");
     } catch (error) {
       alert(error);
     }

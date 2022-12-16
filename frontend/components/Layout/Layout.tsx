@@ -25,7 +25,7 @@ export default function Layout({ children }: Prop) {
         symbol: "TXDC",
         decimals: 18
       },
-      rpcUrls: ["https://rpc.apothem.network"],
+      rpcUrls: ["https://erpc.apothem.network"],
       blockExplorerUrls: ["https://explorer.apothem.network/"]
     }
 } 

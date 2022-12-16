@@ -12,7 +12,7 @@ interface Data {
   amount: number;
   price: number;
   seller: string;
-  matic: boolean;
+  xdc: boolean;
 }
 
 const BuyingPage: React.FC = () => {
@@ -51,7 +51,7 @@ const BuyingPage: React.FC = () => {
           Get Your Required Crypto with a Single Click.
         </h2>
         <div className="w-[80%] h-full mx-auto border border-gray-400 rounded-xl p-2 ">
-          <div className="flex gap-40 justify-center py-5 font-Grotesk text-lg text-gray-400 bg-blur bg-[#313131]/10 uppercase tracking-wider">
+          <div className="flex gap-52 justify-center py-5 font-Grotesk text-lg text-gray-400 bg-blur bg-[#313131]/10 uppercase tracking-wider">
             <h2 className="-ml-8">Name</h2>
             <h2>Quantity</h2>
             <p>Price</p>
@@ -72,7 +72,7 @@ const BuyingPage: React.FC = () => {
                       quantity={item.amount}
                       seller={item.seller}
                       id={index}
-                      matic={item.matic}
+                      xdc={item.xdc}
                     />
                   )
               )}

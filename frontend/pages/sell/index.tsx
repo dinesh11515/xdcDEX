@@ -45,7 +45,7 @@ const SellingFrom: React.FC = () => {
       if (isChecked) {
         const price = ethers.utils.parseEther(enteredPrice);
         const amount = ethers.utils.parseEther(enteredAmount);
-        const tx = await contract.sellMatic(amount, price, { value: amount });
+        const tx = await contract.sellXdc(amount, price, { value: amount });
       } else {
         const price = ethers.utils.parseEther(enteredPrice);
         const amount = ethers.utils.parseEther(enteredAmount);
@@ -62,7 +62,7 @@ const SellingFrom: React.FC = () => {
           price
         );
       }
-      toast.success("Token Listed Successfully");
+      
     } catch (error) {
       alert(error);
     }

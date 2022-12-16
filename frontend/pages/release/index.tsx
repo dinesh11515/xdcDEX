@@ -35,8 +35,6 @@ const ReleasePage = () => {
   const releaseItem = async (id: number) => {
     try {
       const tx = await contract.release(id);
-      await tx.wait();
-      alert("Item released successfully!");
     } catch (e) {
       alert(e);
     }
