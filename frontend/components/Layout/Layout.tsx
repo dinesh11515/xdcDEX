@@ -17,16 +17,16 @@ export default function Layout({ children }: Prop) {
   const [signer, setSigner] = useState<any>();
   const [account, setAccount] = useState<string>("");
   const networks = {
-    mumbai: {
-      chainId: `0x${Number(80001).toString(16)}`,
-      chainName: "Mumbai Testnet",
+    apothem: {
+      chainId: `0x${Number(51).toString(16)}`,
+      chainName: "Apothem",
       nativeCurrency: {
-        name: "MATIC",
-        symbol: "MATIC",
+        name: "XDC",
+        symbol: "TXDC",
         decimals: 18
       },
-      rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
-      blockExplorerUrls: ["https://mumbai.polygonscan.com/"]
+      rpcUrls: ["https://rpc.apothem.network"],
+      blockExplorerUrls: ["https://explorer.apothem.network/"]
     }
 } 
   const connect = async () => {
@@ -37,12 +37,12 @@ export default function Layout({ children }: Prop) {
       );
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
-      if ((await signer.getChainId()) != 80001) {
+      if ((await signer.getChainId()) != 51) {
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [
             {
-              ...networks["mumbai"],
+              ...networks["apothem"],
             },
           ],
         });
@@ -76,4 +76,3 @@ export default function Layout({ children }: Prop) {
     </dexContext.Provider>
   );
 }
-

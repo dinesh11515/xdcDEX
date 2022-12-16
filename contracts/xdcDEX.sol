@@ -1,9 +1,8 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-contract  polyDEX {
+contract  xdcDEX {
 
     uint256 orderId;
     uint256 listId;
@@ -59,11 +58,7 @@ contract  polyDEX {
     
     SellerList[] public listings;
 
-    AggregatorV3Interface internal priceFeed;
-
-    constructor(){
-        priceFeed = AggregatorV3Interface(0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada);
-    }
+    constructor(){}
     
     function register(string memory _name, string memory _email,payment[] memory _payments) public {
         require (sellers[msg.sender].seller == address(0), "You are already registered");
@@ -161,11 +156,6 @@ contract  polyDEX {
 
     function getRequests(address seller) public view returns (buyRequest[] memory){
         return buyRequests[seller];
-    }
-
-    function getLatestPrice() public view returns (int) {
-        (,int price,,,) = priceFeed.latestRoundData();
-        return price;
     }
 
     receive() external payable {}

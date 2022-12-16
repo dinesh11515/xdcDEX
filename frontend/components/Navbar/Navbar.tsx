@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
           onClick={homepageHandler}
           className="font-Grotesk font-semibold text-2xl cursor-pointer"
         >
-          polyDex
+          xdcDex
         </h2>
 
         <div className="flex gap-10 items-center">
@@ -40,6 +40,7 @@ const Navbar: React.FC = () => {
             </li>
           </ul>
         </div>
+        
         {connected ? (
           <button className="bg-[#1e1e1e] border border-[#1e1e1e] text-white font-Grotesk font-semibold px-6 py-3 rounded-full hover:scale-105 transition-all 0.1s ease-in-out">
             Connected

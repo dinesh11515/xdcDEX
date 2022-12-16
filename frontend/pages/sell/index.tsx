@@ -9,7 +9,6 @@ import {
 } from "../../constants/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Web3Storage } from "web3.storage";
 
 const SellingFrom: React.FC = () => {
   const { contract, connect, connected, signer }: any = useContext(dexContext);
@@ -22,29 +21,13 @@ const SellingFrom: React.FC = () => {
   const amountInputRef = useRef<HTMLInputElement>(null);
   const [dataUrl, setDataUrl] = useState<string>("");
   const [showWarning, setShowWarning] = useState<boolean>(false);
-  const [enteredPriceState, setEnteredPriceState] = useState<string>("");
 
   const checkboxHandler = () => {
     setIsChecked(!isChecked);
   };
-  function makeFileObjects(data: any) {
-    const obj = data;
-    const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });
+  
 
-    const files = [new File([blob], "data.json")];
-    return files;
-  }
-
-  //uploadig data to IPFS
-  const storeContent = async (data: any) => {
-    const web3storage_key = process.env.NEXT_PUBLIC_WEB3_STORAGE_KEY;
-    const client = new Web3Storage({ token: web3storage_key || "" });
-    const files = makeFileObjects(data);
-    const cid = await client.put([files[0]]);
-    const url = "ipfs://" + cid + "/data.json";
-    setDataUrl(url);
-    return cid;
-  };
+ 
   const registerHandler = async (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -59,20 +42,10 @@ const SellingFrom: React.FC = () => {
       return alert("Enter Token Address and Token Name or use Matic Token");
 
     try {
-      let data: any = [];
-      data.push({
-        name: enteredTokenName,
-        amount: enteredAmount,
-        price: enteredPrice,
-        seller: signer._address,
-      });
-      const cid = await storeContent(data);
-      console.log(cid);
       if (isChecked) {
         const price = ethers.utils.parseEther(enteredPrice);
         const amount = ethers.utils.parseEther(enteredAmount);
         const tx = await contract.sellMatic(amount, price, { value: amount });
-        await tx.wait();
       } else {
         const price = ethers.utils.parseEther(enteredPrice);
         const amount = ethers.utils.parseEther(enteredAmount);
@@ -82,14 +55,12 @@ const SellingFrom: React.FC = () => {
           signer
         );
         let tx = await tokenContract.approve(contract_address, amount);
-        await tx.wait();
         tx = await contract.sellToken(
           enteredTokenAdd,
           enteredTokenName,
           amount,
           price
         );
-        await tx.wait();
       }
       toast.success("Token Listed Successfully");
     } catch (error) {
@@ -97,41 +68,9 @@ const SellingFrom: React.FC = () => {
     }
   };
 
-  const getPrice = async () => {
-    try {
-      const provider = new ethers.providers.JsonRpcProvider(
-        "https://rpc-mumbai.maticvigil.com/"
-      );
-      const contract = new ethers.Contract(
-        contract_address,
-        contract_abi,
-        provider
-      );
-      const data = await contract.getLatestPrice();
+  
 
-      setPrice(ethers.utils.formatUnits(data, 8));
-    } catch (e) {
-      alert(e);
-    }
-  };
-
-  useEffect(() => {
-    getPrice();
-  }, []);
-
-  const priceChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEnteredPriceState(event.currentTarget.value);
-    if (isChecked && price != null) {
-      if (
-        Number(event.currentTarget.value) < Number(price) - 0.2 ||
-        Number(event.currentTarget.value) > Number(price) + 0.2
-      ) {
-        setShowWarning(true);
-      } else {
-        setShowWarning(false);
-      }
-    }
-  };
+  
 
   const labelStyle: string =
     "font-semibold text-sm mb-1 text-gray-300  w-full flex items-center ";
@@ -142,13 +81,13 @@ const SellingFrom: React.FC = () => {
     <div className="w-full  flex flex-col bg-[#1e1e1e]   items-center h-screen bg-[url('/bg2.png')] bg-center  justify-center   gap-10">
       <div className="flex-[0.67]  p-8 rounded-xl mt-24 border border-gray-500 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
         <p className="text-4xl font-Grotesk font-semibold mb-8 bg-gradient-to-r text-transparent bg-clip-text from-[#FD42FB] via-[#CD9ECD] to-[#753FF3]">
-          Sell any Polygon Chain Token
+          Sell any XDC Chain Token
         </p>
 
         {/* Form */}
         <form onSubmit={registerHandler}>
           <p className="mb-1 text-gray-300">
-            👇 Select this if you are selling matic token
+            👇 Select this if you are selling XDC token
           </p>
           <div className="py-3 ">
             <label
@@ -162,7 +101,7 @@ const SellingFrom: React.FC = () => {
                 value="btt"
                 checked={isChecked}
               />
-              Matic Token
+              XDC Token
             </label>
           </div>
 
@@ -184,7 +123,7 @@ const SellingFrom: React.FC = () => {
             className={inputStyle}
             type="text"
             id="token-name"
-            placeholder="Matic"
+            placeholder="XDC"
           />
           <div className="flex gap-10">
             <div className="flex flex-col ">
@@ -198,8 +137,6 @@ const SellingFrom: React.FC = () => {
                 id="price"
                 type="text"
                 placeholder="0.12"
-                onChange={priceChangeHandler}
-                value={enteredPriceState}
               />
             </div>
 

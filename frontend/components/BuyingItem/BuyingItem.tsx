@@ -29,39 +29,16 @@ const BuyingItem: React.FC<{
   function getFormatedAmount(amount: number) {
     return ethers.utils.formatEther(amount).toString();
   }
-  function makeFileObjects (data :any) {
-    const obj = data;
-    const blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
   
-    const files = [
-      new File([blob], 'data.json')
-    ]
-    return files
-  }
-
-  //uploadig data to IPFS
-  const storeContent = async (data : any) => {
-    const web3storage_key = process.env.NEXT_PUBLIC_WEB3_STORAGE_KEY;
-    const client = new Web3Storage({ token: web3storage_key || ""});
-    const files = makeFileObjects(data);
-    const cid = await client.put([files[0]]);
-    const url = ("ipfs://"+cid+"/data.json");
-    setDataUrl(url);
-    return cid;
-  };
-
+ 
   const buyItem = async (id: number, amount: BigNumber, name: string) => {
     try {
       let data : any = [];
       data.push({name: name, amount: amount.toString(), seller: seller, buyer: account});
-      const cid = await storeContent(data);
-      console.log(cid);
       if (matic) {
         const tx = await contract.buyMaticRequest(id, amount, name);
-        await tx.wait();
       } else {
         const tx = await contract.buyTokenRequest(id, amount, name);
-        await tx.wait();
       }
       alert("Item bought successfully!");
     } catch (e) {

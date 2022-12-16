@@ -33,7 +33,7 @@ const Modal: React.FC<{
 
   const getData = async () => {
     try{
-      const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com/");
+      const provider = new ethers.providers.JsonRpcProvider("https://erpc.apothem.network/");
       const contract = new ethers.Contract(
         contract_address,
         contract_abi,

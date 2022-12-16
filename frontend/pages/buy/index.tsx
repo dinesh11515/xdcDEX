@@ -23,7 +23,7 @@ const BuyingPage: React.FC = () => {
     try {
       setIsLoading(true);
       const provider = new ethers.providers.JsonRpcProvider(
-        "https://rpc-mumbai.maticvigil.com/"
+        "https://erpc.apothem.network/"
       );
       const contract = new ethers.Contract(
         contract_address,

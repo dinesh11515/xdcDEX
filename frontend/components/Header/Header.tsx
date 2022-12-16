@@ -14,12 +14,12 @@ const Header: React.FC = () => {
             <span className="bg-gradient-to-r text-transparent bg-clip-text from-[#FD42FB] via-[#CD9ECD] to-[#753FF3] ">
               The most intuitive way to buy and sell
             </span>{" "}
-            crypto in Polygon Chain
+            crypto in XDC Chain
           </h2>
 
           <p className="text-gray-400 w-[60%] mx-auto font-Grotesk">
             A Peer to peer decentralised crypto marketplace where user can sell
-            and buy polygon chain cryptocurrencies using any payment method.
+            and buy XDC chain cryptocurrencies using any payment method.
           </p>
 
           <button
