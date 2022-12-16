@@ -3,7 +3,7 @@ import { BigNumber, ethers } from "ethers";
 import Modal from "../Modal/Modal";
 import { useContext, useEffect } from "react";
 import { dexContext } from "../../components/Layout/Layout";
-import {Web3Storage} from "web3.storage";
+
 
 const BuyingItem: React.FC<{
   name: string;
