@@ -1,38 +1,28 @@
-## polyDex
+## xdcDEX
 
-A Peer to peer decentralised crypto marketplace where user can sell and buy polygon chain cryptocurrencies using any payment method.
+A Peer to peer decentralized crypto marketplace where user can sell and buy XDC chain cryptocurrencies using any payment method.
 
-[Demo link](https://poly-dex.vercel.app/)
+[Demo link](https://xdc-dex.vercel.app/)
 
-[Demo Video](https://youtu.be/L6UVnMeqW-A)
+[Demo video]()
+
 
 ### Technologies Used :
 
-#### IPFS :
--> Data was uploaded to IPFS  ([code1](https://github.com/dinesh11515/polyDEX/blob/main/frontend/components/BuyingItem/BuyingItem.tsx#L42)) 
-([code2](https://github.com/dinesh11515/polyDEX/blob/main/frontend/pages/sell/index.tsx#L38))
-([code3](https://github.com/dinesh11515/polyDEX/blob/main/frontend/pages/register/index.tsx#L46))
-
--> polyDex was deployed on Filecoin using Spheron
+Apothem Chain :
+Smarts contracts are deployed to xdc apothem testnet ([contract link](https://explorer.apothem.network/address/xdcA0e44f49A9eA0AB837d0ad48912D0B2E9F4e6322))
 
 
-#### Polygon :
-Smarts contracts are deployed to polygon mumbai testnet ([contract link](https://mumbai.polygonscan.com/address/0x91bc266aa852340cBCEF51DDb2D63C523d96F8A0#code))
+### What it does
+xdcDEX enables users to sell and buy XDC chain cryptocurrencies using any payment method like paytm,paypal,phonepe and google pay etc.
 
-#### Chainlink Services :
-Used Chainlink datafeeds for getting price data of Polygon ([code](https://github.com/dinesh11515/polyDEX/blob/main/contracts/polyDEX.sol#L4))
+### How we built it
+* xdcDex was built by using Next and TailwindCSS for frontend.
+* Solidity for smart contracts and hardhat for testing smart contract. 
+* Used ethers.js for interacting with contract from frontend.
 
-## What it does
-polyDex enables users to sell and buy polygon chain cryptocurrencies using any payment method like paytm,paypal,phonepe and google pay etc.
 
-## How we built it
-polyDex was built by using Next and TailwindCSS for frontend
-* Solidity for smart contracts and hardhat for testing and deploying the smart contracts to Mumbai testnet
-* It uses web3.storage for storing data in IPFS 
-* polyDex was hosted on Filecoin using Spheron
-
-## What we learned
-* Uploading and retrieving the data From IPFS.
-* Learnt integration of chianlink data feeds in smart contract
-## What's next for polyDex
-Right now  polyDex was only available in Polygon chain,adding more chains was the future plan
+### What we learned
+we are completely new to XDC network and we learnt how to deploy a contract to XDC chain and xdc wallet integration, and interaction of contract from frontend.
+### What's next for xdcDEX
+Right now xdcDEX was only available in XDC chain,adding more chains was the future plan.
