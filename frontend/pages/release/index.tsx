@@ -34,7 +34,7 @@ const ReleasePage = () => {
 
   const releaseItem = async (id: number) => {
     try {
-      const tx = await contract.release(id);
+      const tx = await contract.release(id,{gasLimit : 3000000});
     } catch (e) {
       alert(e);
     }
