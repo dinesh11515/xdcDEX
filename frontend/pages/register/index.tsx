@@ -18,7 +18,7 @@ const RegistrationFrom: React.FC = () => {
   const [gpayUPI, setGpayUPI] = useState<string>("");
   const [phonepeUPI, setPhonepeUPI] = useState<string>("");
   const [paypalEmail, setPaypalEmail] = useState<string>("");
-  const [dataUrl,setDataUrl] = useState<string>("");
+  const [dataUrl, setDataUrl] = useState<string>("");
 
   const [showPaytmUPI, setShowPaytmUPI] = useState<boolean>(false);
   const [showGpayUPI, setShowGpayUPI] = useState<boolean>(false);
@@ -31,8 +31,6 @@ const RegistrationFrom: React.FC = () => {
   const phonepeInputRef = useRef<HTMLInputElement>(null);
   const paytmInputRef = useRef<HTMLInputElement>(null);
   const paypalInputRef = useRef<HTMLInputElement>(null);
-
-  
 
   const paytmUPIHandler: () => void = () => {
     setShowPaytmUPI(!showPaytmUPI);
@@ -145,31 +143,8 @@ const RegistrationFrom: React.FC = () => {
                 Start your crypto journey with us.
               </h2>
               <p className="text-gray-300 text-base">
-                sell your crypto assets and get paid in your local currency
+                Sell your crypto assets and get paid in your local currency
               </p>
-            </div>
-
-            <div className="bg-[#470752] py-3 px-4 rounded-lg">
-              <p className="text-white text-sm mb-4">
-                Simply unbelievable!! I am really satisfied with the services
-                provided by the polyDEX. I was able to sell my crypto assets in
-                minutes.
-              </p>
-              <div className="flex gap-2">
-                <Image
-                  src={me}
-                  height={45}
-                  width={45}
-                  className="rounded-xl"
-                  alt="me"
-                />
-                <div>
-                  <h2 className="text-white font-semibold text-sm ">
-                    Aman Mandal
-                  </h2>
-                  <p className="text-gray-300 text-xs">Developer</p>
-                </div>
-              </div>
             </div>
           </div>
           <div className="flex-[0.67] pr-10 py-4">
@@ -305,7 +280,7 @@ const RegistrationFrom: React.FC = () => {
           </div>
         </div>
       </div>
-        <ToastContainer />
+      <ToastContainer />
     </div>
   );
 };
